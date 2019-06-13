@@ -1,3 +1,5 @@
+from csv_reader import *
+
 class network(object):
 	def __init__(self, sizes):
 		self.layers = len(sizes) #quantidade de camadas, incluindo entrada e saída

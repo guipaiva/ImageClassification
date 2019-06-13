@@ -1,11 +1,11 @@
 import csv
 import numpy as np
 import time
-from numpy.linalg import norm 
+#from numpy.linalg import norm 
 
 x = []
 label = []
-t0=time.time()
+
 with open('train.csv','r') as f:
 	next(f)	#ignora o cabeçalho
 	reader = csv.reader(f, delimiter = ',')
@@ -14,6 +14,5 @@ with open('train.csv','r') as f:
 		label.append(int(row[0]))	#Insere os labels nesta lista
 
 
-x = [val/norm(row) for row in x for val in row]  #[val/255 for row in x for val in row] 
-t1=time.time()
-print(t1-t0)
+x = [val/255 for row in x for val in row] #[val/norm(row) for row in x for val in row if val != 0]  
+

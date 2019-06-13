@@ -1,5 +1,4 @@
 from matplotlib import pyplot as plt
-import numpy as np
 from csv_reader import *
 
 def plot(x,label):
