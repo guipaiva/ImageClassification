@@ -1,18 +1,25 @@
 import csv
 import numpy as np
 import time
-#from numpy.linalg import norm 
+from numpy.linalg import norm 
 
+#Matriz de entrada
 x = []
+
+#Vetor de Saída esperado
 label = []
 
 with open('train.csv','r') as f:
-	next(f)	#ignora o cabeçalho
+	#ignora o cabeçalho
+	next(f)	
 	reader = csv.reader(f, delimiter = ',')
 	for row in reader: 
-		x.append([int(i) for i in row[1:]]) #desconsidera a coluna de label
-		label.append(int(row[0]))	#Insere os labels nesta lista
+		#insere os valores em x desconsiderando a coluna de label
+		x.append([int(i) for i in row[1:]])
+		#Insere os labels nesta lista 
+		label.append(int(row[0]))	
 
-
-x = [val/255 for row in x for val in row] #[val/norm(row) for row in x for val in row if val != 0]  
-
+#normaliza os dados de entrada
+#Divide por 255 se valor != 0
+x =[[val/255 if val!= 0 else 0 for val in row] for row in x] 
+#x = [[val/norm(row) if val!=0 else 0 for val in row ] for row in x]
