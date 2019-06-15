@@ -9,7 +9,7 @@ def plot(x,label):
 	labels = ('Label: '+str(int(label))) 
 	plt.title(labels)
 	#define o plot da imagem na escala de cinza
-	plt.imshow(x, cmap="gray") 
+	plt.imshow(x, cmap="Greys") 
 	plt.show()
 
 i = int(input("De 1 a 42000, qual imagem deseja exibir?\n"))

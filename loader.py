@@ -7,5 +7,3 @@ x = data[0]
 labels = data[1]
 norms = data[2]
 
-
-
