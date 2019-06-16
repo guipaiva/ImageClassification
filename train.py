@@ -1,4 +1,4 @@
-from loader import *
+from train_loader import *
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
