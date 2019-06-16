@@ -1,10 +1,9 @@
 from loader import *
-from math import exp
 import numpy as np
 
 #Calcula a função sigmoide com theta transposto (função de ativação)
 def sigmoid(z):
-	return 1/(1+exp(-z))
+	return 1/(1+np.exp(-z))
 
 #Gradiente da função sigmoide
 def gd_sigmoid(z):
@@ -24,21 +23,19 @@ class neural_network:
 		'''Matriz de pesos theta, com a conexão de todos os neurônios de uma camada com os da camada seguinte
 		theta[0] = matriz[784x15]; theta[1] = matriz [15x10]'''
 		self.theta = [np.random.rand(y,x) for x,y in zip(sizes[:-1], sizes[1:])]
+	
+	def forward_propagation(self,x,theta):
+		a1 = sigmoid(np.dot(x,theta[0].T))
+		a2 = sigmoid(np.dot(a1,theta[1].T))
+		return a2
 
-	
-	def forward_propagation(self,x):
-		z1 = np.dot(self.theta[0],x)
-		z1 = sigmoid(z1)
-		#z2 = np.dot(self.theta[1],z1)
-		return a
-	
-	def coust_function(layers,sizes,theta,x,y,v_lambda):
+	def coust_function(self,theta,v_lambda):
 		#transforma o label na representação "one-hot"
-		#Ex: labels[0] = 1, y[0]= [0,1,0,0,0,0,0,0,0,0]
+		#Ex: labels = 1, y= [0,1,0,0,0,0,0,0,0,0]
 		y = np.eye(10)[labels.astype(int)]
 		j=0
-		m = len(sizes[0])	#quantidade de neurônios de entrada
-		h = 0	#calcular o valor de h aqui h=aj^(i) ---------------- Criar backpropagation
+		m = self.sizes[0]	#quantidade de neurônios de entrada
+		h = self.forward_propagation(x,theta)	#calcular o valor de h aqui h=aj^(i) ---------------- Criar backpropagation
 		theta1 = theta[0]	#Aqui eu pego apenas os pesos da camada de entrada -------------- reshape
 		theta2 = theta[1]	#Aqui eu pego apenas os pesos da camada oculta ------------- reshape
 		for i in range(m):
@@ -49,3 +46,8 @@ class neural_network:
 		#Sl= número de neurônios da camada l.
 		j += (v_lambda / (2 * m)) * (np.sum(np.power(theta1[:,1:], 2)) + np.sum(np.power(theta2[:,1:], 2)))
 		return j
+	
+	def back_propagation(x,y):
+		pass
+
+	
