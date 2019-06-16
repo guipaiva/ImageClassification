@@ -34,7 +34,7 @@ for i in range(len(x)):
 x/=255.0
 
 #salva os dados em formato binário para agilizar os processos de leitura dos dados
-with open("dump.pkl","bw") as dmp:
+with open("train_dump.pkl","bw") as dmp:
 	data = (x, labels, sizes)
 	pickle.dump(data, dmp)
 	

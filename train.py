@@ -13,6 +13,5 @@ model.add(Dense(10, activation="sigmoid"))
 
 model.compile(optimizer= SGD(0.01), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-
 model.fit(x,labels,epochs=5)
 
