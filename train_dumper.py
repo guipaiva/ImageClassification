@@ -12,7 +12,7 @@ norms=[]
 		sizes[0] = camada de input, sizes[1] = camada oculta
 		sizes[2] = camada de output'''
 sizes = [784,50,10]
-with open('train.csv','r') as f:
+with open('Data/train.csv','r') as f:
 	reader = csv.reader(f, delimiter = ',')
 	#ignora o cabeçalho
 	next(f)	

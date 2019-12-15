@@ -5,7 +5,7 @@ import time
 from numpy import linalg as la
 
 t0 = time.time()
-with open('test.csv','r') as f:
+with open('Data/test.csv','r') as f:
 	#abre o arquivo como csv e define a ',' como delimitador
 	reader = csv.reader(f, delimiter = ',')
 	#ignora o cabeçalho
